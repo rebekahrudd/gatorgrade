@@ -320,8 +320,8 @@ def run_checks(
             if "--command" in check.gg_args:
                 index_of_command = check.gg_args.index("--command")
                 index_of_new_command = int(index_of_command) + 1
-                command_output.append(check.gg_args[index_of_new_command])
-
+                command_ran = (check.gg_args[index_of_new_command])
+                
         # there were results from running checks
         # and thus they must be displayed
         if result is not None:
