@@ -44,7 +44,10 @@ class CheckResult:  # pylint: disable=too-few-public-methods
         icon_color = "green" if self.passed else "red"
         message = f"[{icon_color}]{icon}[/]  {self.description}"
         if not self.passed and show_diagnostic:
-            message += f"\n[yellow]   → [yellow]Failing Command Output: [yellow]{self.diagnostic}"
+            if self.diagnostic is None:
+                message += "\n[yellow]   → Failing Command Output: The command failed but there was no output to show."
+            else:
+                message += f"\n[yellow]   → [yellow]Failing Command Output: [yellow]{self.diagnostic}"
         return message
 
     def __repr__(self):
